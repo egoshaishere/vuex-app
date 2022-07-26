@@ -4,7 +4,7 @@
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>
     </nav>
-    <router-view/>
+    <router-view />
   </div>
 </template>
 
@@ -28,5 +28,24 @@ nav a {
 
 nav a.router-link-exact-active {
   color: #42b983;
+}
+
+.title {
+  /* display: flex;
+  justify-content: center; */
+  color: rgb(33, 39, 6);
+  margin: 15px;
+}
+
+.box {
+  margin: 20px;
+  border: 2px solid rgb(33, 39, 6);
+  border-radius: 30px;
+  padding: 20px;
+}
+
+.butt {
+  width: 150px;
+  height: 20px;
 }
 </style>
