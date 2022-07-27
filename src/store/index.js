@@ -37,6 +37,19 @@ export default new Vuex.Store({
     }
   },
   actions: {
+    // можно короче используя деструктуризацию
+    // increment(context) {
+    //   context.commit('increment');
+    // },
+    // короче с использованием дестируктуризации     increment ({ commit }) {commit('increment')},
+    incrementACTION ({ commit }) {
+      commit('increment')
+    },
+    incrementDelay({ commit }){
+      setTimeout(() => {
+        commit('increment')
+      }, 1000)
+    }
   },
   modules: {
   }

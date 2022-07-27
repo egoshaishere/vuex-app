@@ -7,6 +7,9 @@
     <input type="text" v-model="by.amount" />
     <button class="butt" v-on:click="incBy">by++</button>
     <button class="butt" v-on:click="decBy">by--</button>
+
+    <button class="butt" v-on:click="incAction">action++</button>
+    <button class="butt" v-on:click="incDelay">actionDelay++</button>
   </div>
 </template>
 
@@ -25,10 +28,16 @@ export default {
   methods: {
     ...mapMutations(['increment', 'decrement', 'incrementBy', 'decrementBy']),
     incBy() {
-      this.incrementBy(this.by.amount)
+      this.incrementBy(parseInt(this.by.amount, 10))
     },
     decBy(){
-      this.decrementBy(this.by.amount)
+      this.decrementBy(parseInt(this.by.amount, 10))
+    },
+    incAction(){
+      this.$store.dispatch('incrementACTION')
+    },
+    incDelay(){
+      this.$store.dispatch('incrementDelay')
     }
   },
 
