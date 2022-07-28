@@ -5,6 +5,7 @@
     <HelloWorld msg="Welcome to Your Vue.js App"/>
     <VuexCounter />
     <ToDo />
+    <Fetcher />
 
   </div>
 </template>
@@ -14,7 +15,7 @@
 import HelloWorld from '@/components/HelloWorld.vue'
 import VuexCounter from '@/components/VuexCounter.vue'
 import ToDo from '@/components/ToDo.vue'
-
+import Fetcher from '@/components/Fetcher.vue'
 
 export default {
   name: 'HomeView',
@@ -22,6 +23,7 @@ export default {
     HelloWorld,
     VuexCounter,
     ToDo,
+    Fetcher,
   }
 }
 </script>

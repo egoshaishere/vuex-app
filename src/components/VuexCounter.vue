@@ -1,20 +1,29 @@
 <template>
-  <div class="box">
-    <div class="title">{{ count }}</div>
-    <button class="butt" v-on:click="increment">++</button>
-    <button class="butt" v-on:click="decrement">--</button>
+  <div>
+    <div class="box">
+      <div class="title">{{ count }}</div>
+      <button class="butt" v-on:click="increment">++</button>
+      <button class="butt" v-on:click="decrement">--</button>
 
-    <input type="text" v-model="by.amount" />
-    <button class="butt" v-on:click="incBy">by++</button>
-    <button class="butt" v-on:click="decBy">by--</button>
+      <input type="text" v-model="by.amount" />
+      <button class="butt" v-on:click="incBy">by++</button>
+      <button class="butt" v-on:click="decBy">by--</button>
 
-    <button class="butt" v-on:click="incAction">action++</button>
-    <button class="butt" v-on:click="incDelay">actionDelay++</button>
+      <button class="butt" v-on:click="incAction">action++</button>
+      <button class="butt" v-on:click="incDelay">actionDelay++</button>
+    </div>
+
+    <div>
+      <div class="title">{{ justValue }}</div>
+      <button class="butt" v-on:click="actionA">actionA</button>
+      <button class="butt" v-on:click="aThenPrint">aThenPrint</button>
+      <button class="butt" v-on:click="actionB">actionB</button>
+    </div>
   </div>
 </template>
 
 <script>
-import { mapState, mapMutations } from "vuex";
+import { mapState, mapMutations, mapActions } from "vuex";
 
 export default {
   name: "VuexCounter",
@@ -24,20 +33,26 @@ export default {
       localVal: 135,
     };
   },
-  computed: mapState(["count"]),
+  computed: mapState(["count", "justValue"]),
   methods: {
-    ...mapMutations(['increment', 'decrement', 'incrementBy', 'decrementBy']),
+    ...mapMutations(["increment", "decrement", "incrementBy", "decrementBy"]),
     incBy() {
-      this.incrementBy(parseInt(this.by.amount, 10))
+      this.incrementBy(parseInt(this.by.amount, 10));
     },
-    decBy(){
-      this.decrementBy(parseInt(this.by.amount, 10))
+    decBy() {
+      this.decrementBy(parseInt(this.by.amount, 10));
     },
-    incAction(){
-      this.$store.dispatch('incrementACTION')
+    incAction() {
+      this.$store.dispatch("incrementACTION");
     },
-    incDelay(){
-      this.$store.dispatch('incrementDelay')
+    incDelay() {
+      this.$store.dispatch("incrementDelay");
+    },
+    ...mapActions(['actionA', 'actionB']),
+    aThenPrint() {
+      this.$store.dispatch('actionA').then(() => {
+        console.log('после выполения экшен А')
+      })
     }
   },
 
