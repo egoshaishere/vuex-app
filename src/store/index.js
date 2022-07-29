@@ -3,28 +3,15 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
-function getData() {
-  fetch('https://jsonplaceholder.typicode.com/comments')
-    .then(response => response.json())
-    .then(json => console.log(json))
-    .then(json => {
-      return json
-    })
+async function getData() {
+  const response = await fetch('https://jsonplaceholder.typicode.com/comments');
+  return await response.json();
 }
 
-
-
-const getOtherData = () => {
-  let result = undefined
-  fetch('https://jsonplaceholder.typicode.com/users')
-    .then(response => response.json())
-    .then(json => console.log(json))
-  return 'lololololo'
+const getOtherData = async () => {
+  const response = await fetch('https://jsonplaceholder.typicode.com/users');
+  return await response.json();
 }
-
-
-
-
 
 export default new Vuex.Store({
   state: {
@@ -34,7 +21,7 @@ export default new Vuex.Store({
       { id: 1, text: '...', done: true },
       { id: 2, text: '...', done: false },
     ],
-    data: {},
+    data: "",
     otherData: ""
 
   },
